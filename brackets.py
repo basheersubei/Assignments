@@ -18,16 +18,14 @@ if __name__ == "__main__":
 
         elif letter in closing_brackets:
 
-            if brackets_stack[-1] in opening_brackets:
+            if brackets_stack[-1] == '[' and letter == ']' or \
+               brackets_stack[-1] == '(' and letter == ')' or \
+               brackets_stack[-1] == '{' and letter == '}':
+                brackets_stack.pop()
+                print("POP")
 
-                if brackets_stack[-1] == '[' and letter == ']' or \
-                   brackets_stack[-1] == '(' and letter == ')' or \
-                   brackets_stack[-1] == '{' and letter == '}':
-                    brackets_stack.pop()
-                    print("POP")
-
-                else:
-                    print("ERROR at index: {}".format(index))
+            else:
+                print("ERROR at index: {}".format(index))
 
         else:
             print("Not a bracket")
