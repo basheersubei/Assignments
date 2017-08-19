@@ -42,14 +42,14 @@ class TreeHeight:
             print("Root node:")
             print("{}\n".format(node))
 
-        if node.children != []:
+        if len(node.children):
             print("{}'s children are:".format(node))
             print("{}\n".format(node.children))
             for child in node.children:
                 self.print_tree(child)
 
     def max_height(self, node, current_height):
-        if node.children != []:
+        if len(node.children):
             self.tree_height = current_height + 1
             for child in node.children:
                 self.max_height(child, self.tree_height)
