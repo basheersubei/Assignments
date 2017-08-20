@@ -15,7 +15,7 @@ class TreeHeight:
     def __init__(self):
         self.nodes = []
         self.root = Node()
-        self.tree_height = 1
+        self.tree_height = 0
 
     def read(self):
             self.n = int(sys.stdin.readline())
@@ -49,14 +49,17 @@ class TreeHeight:
                 self.print_tree(child)
 
     def max_height(self, node, current_height):
+        current_height += 1
         if len(node.children):
-            self.tree_height = current_height + 1
             for child in node.children:
-                self.max_height(child, self.tree_height)
+                return max(self.max_height(child, current_height), current_height)
+        else:
+            return current_height
+
 
     def compute_height(self):
-        self.max_height(self.root, self.tree_height)
-        print(self.tree_height)
+        self.tree_height = self.max_height(self.root, 0)
+        print('the tree height is: {}'.format(self.tree_height))
 
 def main():
   tree = TreeHeight()
